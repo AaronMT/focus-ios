@@ -396,8 +396,8 @@ class BrowserViewController: UIViewController {
         // UIDevice.current.orientation isn't reliable. See https://bugzilla.mozilla.org/show_bug.cgi?id=1315370#c5
         // As a workaround, consider the phone to be in landscape if the new width is greater than the height.
         showsToolsetInURLBar = (UIDevice.current.userInterfaceIdiom == .pad && (UIScreen.main.bounds.width == size.width || size.width > size.height)) || (UIDevice.current.userInterfaceIdiom == .phone && size.width > size.height)
-        urlBar.updateConstraints()
-        browserToolbar.updateConstraints()
+        urlBar.updateConstraintsIfNeeded()
+        browserToolbar.updateConstraintsIfNeeded()
         
         coordinator.animate(alongsideTransition: { _ in
             self.urlBar.showToolset = self.showsToolsetInURLBar
